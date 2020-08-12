@@ -47,11 +47,18 @@ steps:
     packagePath: '$(build.artifactstagingdirectory)'
     deployScriptPath: ''
 
+# - task: AzurePowerShell@5
+#   inputs:
+#     azureSubscription: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
+#     ScriptType: 'InlineScript'
+#     Inline: 'az vmss update --resource-group java-vmss --name rai-packer-image-vmss --set virtualMachineProfile.storageProfile.imageReference.id=/subscriptions/afc11291-9826-46be-b852-70349146ddf8/resourceGroups/raiyan-rg2/providers/Microsoft.Compute/images/rai-packer-img-1585545025'
+#     azurePowerShellVersion: 'LatestVersion'
+
 - task: AzureVmssDeployment@0
   inputs:
     azureSubscription: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
     action: 'Update image'
-    vmssName: 'java-scale-set'
+    vmssName: 'java-four-scaleset'
     vmssOsType: 'Linux'
     imageUrl: '/subscriptions/82c135d4-f813-4bec-a93e-60e4323918ee/resourceGroups/java-vmss/providers/Microsoft.Compute/images/java-vmss-image-general'
 
