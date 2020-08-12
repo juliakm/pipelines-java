@@ -37,14 +37,27 @@ steps:
 - task: PackerBuild@1
   displayName: 'Build immutable image'
   inputs:
-    templateType: 'builtin'
+    templateType: custom
+    customTemplateLocation: '$(System.DefaultWorkingDirectory)/_packer-build/packer-template2.json'
+    customTemplateParameters: '{"subscription_id":"82c135d4-f813-4bec-a93e-60e4323918ee","client_id":"8a965742-d2ac-4123-8a02-780bd4fe49f6","client_secret":"1d77af71-0c0a-47dd-a311-f04b8606d72c","tenant_id":"72f988bf-86f1-41af-91ab-2d7cd011db47"}'
     ConnectedServiceName: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
-    isManagedImage: true
-    managedImageName: 'vmss-packer-build'
     location: 'eastus2'
     storageAccountName: 'vmssstorage1234'
     azureResourceGroup: 'java-vmss'
-    baseImageSource: 'default'
-    baseImage: 'Canonical:UbuntuServer:16.04-LTS:linux'
     packagePath: '$(build.artifactstagingdirectory)'
-    deployScriptPath: 'install.sh'
+    deployScriptPath: ''
+
+# - task: PackerBuild@1
+#   displayName: 'Build immutable image'
+#   inputs:
+#     templateType: 'builtin'
+#     ConnectedServiceName: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
+#     isManagedImage: true
+#     managedImageName: 'vmss-packer-build'
+#     location: 'eastus2'
+#     storageAccountName: 'vmssstorage1234'
+#     azureResourceGroup: 'java-vmss'
+#     baseImageSource: 'default'
+#     baseImage: 'Canonical:UbuntuServer:16.04-LTS:linux'
+#     packagePath: '$(build.artifactstagingdirectory)'
+#     deployScriptPath: 'install.sh'
