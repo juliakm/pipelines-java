@@ -47,6 +47,14 @@ steps:
     packagePath: '$(build.artifactstagingdirectory)'
     deployScriptPath: ''
 
+- task: AzureVmssDeployment@0
+  inputs:
+    azureSubscription: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
+    action: 'Update image'
+    vmssName: 'java-scale-set'
+    vmssOsType: 'Linux'
+    imageUrl: '/subscriptions/82c135d4-f813-4bec-a93e-60e4323918ee/resourceGroups/java-vmss/providers/Microsoft.Compute/images/java-vmss-image-general'
+
 # - task: PackerBuild@1
 #   displayName: 'Build immutable image'
 #   inputs:
