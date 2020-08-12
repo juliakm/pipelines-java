@@ -34,16 +34,17 @@ steps:
     PathtoPublish: $(build.artifactstagingdirectory)    
 
 
-# - task: PackerBuild@1
-#   displayName: 'Build immutable image'
-#   inputs:
-#     templateType: 'builtin'
-#     ConnectedServiceName: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
-#     isManagedImage: true
-#     managedImageName: 'vmss-packer-build'
-#     location: 'eastus2'
-#     storageAccountName: 'vmssstorage1234'
-#     azureResourceGroup: 'java-vmss'
-#     baseImageSource: 'default'
-#     baseImage: 'Canonical:UbuntuServer:16.04-LTS:linux'
-#     deployScriptPath: 'install.sh'
+- task: PackerBuild@1
+  displayName: 'Build immutable image'
+  inputs:
+    templateType: 'builtin'
+    ConnectedServiceName: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
+    isManagedImage: true
+    managedImageName: 'vmss-packer-build'
+    location: 'eastus2'
+    storageAccountName: 'vmssstorage1234'
+    azureResourceGroup: 'java-vmss'
+    baseImageSource: 'default'
+    baseImage: 'Canonical:UbuntuServer:16.04-LTS:linux'
+    packagePath: '$(build.artifactstagingdirectory)'
+    deployScriptPath: 'install.sh'
