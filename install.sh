@@ -1,8 +1,8 @@
-chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'
+# chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'
 
 apt-get update
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
-source ~/.profile
+# source ~/.profile
 nvm --version
 nvm install 10
 
