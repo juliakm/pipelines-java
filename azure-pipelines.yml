@@ -47,12 +47,18 @@ steps:
     packagePath: '$(build.artifactstagingdirectory)'
     deployScriptPath: ''
 
-- task: AzurePowerShell@5
+- script: echo $(ManagedImageId)
+- task: Bash@3
   inputs:
-    azureSubscription: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
-    ScriptType: 'InlineScript'
-    Inline: 'az vmss update --resource-group java-vmss --name java-four-scaleset --set virtualMachineProfile.storageProfile.imageReference.id=/subscriptions/82c135d4-f813-4bec-a93e-60e4323918ee/resourceGroups/java-vmss/providers/Microsoft.Compute/images/example-packer-img-1597261530'
-    azurePowerShellVersion: 'LatestVersion'
+    targetType: 'inline'
+    script: 'env | sort'
+
+# - task: AzurePowerShell@5
+#   inputs:
+#     azureSubscription: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
+#     ScriptType: 'InlineScript'
+#     Inline: 'az vmss update --resource-group java-vmss --name java-four-scaleset --set virtualMachineProfile.storageProfile.imageReference.id=/subscriptions/82c135d4-f813-4bec-a93e-60e4323918ee/resourceGroups/java-vmss/providers/Microsoft.Compute/images/example-packer-img-1597261530'
+#     azurePowerShellVersion: 'LatestVersion'
 
 # - task: AzureVmssDeployment@0
 #   inputs:
