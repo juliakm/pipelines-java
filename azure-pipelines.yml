@@ -1,7 +1,5 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+variables:
+  
 
 trigger:
 - master
@@ -39,7 +37,7 @@ steps:
   inputs:
     templateType: custom
     customTemplateLocation: '$(System.DefaultWorkingDirectory)/packer-template.json'
-    customTemplateParameters: '{"subscription_id":"82c135d4-f813-4bec-a93e-60e4323918ee","client_id":"8a965742-d2ac-4123-8a02-780bd4fe49f6","client_secret":"1d77af71-0c0a-47dd-a311-f04b8606d72c","tenant_id":"72f988bf-86f1-41af-91ab-2d7cd011db47"}'
+    customTemplateParameters: '{"subscription_id":"82c135d4-f813-4bec-a93e-60e4323918ee","client_id":"8a965742-d2ac-4123-8a02-780bd4fe49f6","client_secret":"1d77af71-0c0a-47dd-a311-f04b8606d72c","tenant_id":"72f988bf-86f1-41af-91ab-2d7cd011db47","managed_image_name":vmss-image-$(Build.BuildId)}'
     ConnectedServiceName: 'DevOps Pipelines - ARM Horizontal Work(82c135d4-f813-4bec-a93e-60e4323918ee)'
     location: 'eastus2'
     storageAccountName: 'vmssstorage1234'
