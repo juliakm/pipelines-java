@@ -6,7 +6,7 @@
 		"client_secret": "{{user `client_secret`}}",
 		"tenant_id": "{{user `tenant_id`}}",
 		"managed_image_resource_group_name": "java-vmss",
-		"managed_image_name": "example-packer-img-{{timestamp}}",
+		"managed_image_name": "{{ user `managed_image_name` }}",
 		"os_type": "Linux",
 		"image_publisher": "Canonical",
 		"image_offer": "UbuntuServer",
